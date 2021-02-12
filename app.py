@@ -9,9 +9,9 @@ cache = redis.from_url(os.environ.get("REDIS_URL"))
 def get_cache():
     return cache.get('reddit_job') or "No job data saved."
 
-@app.route('/upload/<job_data>')
-def set_cache():
-    cache.set("reddit_job", job_data)
+@app.route('/upload/<data>')
+def set_cache(data):
+    cache.set('reddit_job', data)
     return "Job data saved."
 
 if __name__ == '__main__':
